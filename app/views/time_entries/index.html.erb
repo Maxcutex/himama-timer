@@ -13,11 +13,11 @@
 </div>
 
 
-<h1>Your times</h1>
+<h1>Himama Timesheet</h1>
 
-<table class="table">
-  <thead>
-    <tr>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr >
       <th>Starts At</th>
       <th>Finishes At</th>
       <th></th>
@@ -27,8 +27,14 @@
   <tbody>
     <% @time_entries.each do |time_entry| %>
       <tr>
-        <td><%= formated_time(time_entry.starts_at) %></td>
-        <td><%= formated_time(time_entry.finishes_at, 'Running...') %></td>
+        <td><%= time_entry.starts_at.to_formatted_s(:long) %></td>
+        <td> 
+        <% if time_entry.finishes_at %>
+        <%= time_entry.finishes_at.to_formatted_s(:long)%>
+        <% else %>
+        Running ...
+        <% end %>
+        </td>
         <td>
           <% if time_entry.finishes_at %>
             <%= link_to 'Edit', edit_time_entry_path(time_entry), class: "btn btn-warning" %>

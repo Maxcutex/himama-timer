@@ -1,8 +1,8 @@
 <div class="col-md-6">
 <%= form_with(model: time_entry, local: true) do |form| %>
   <% if time_entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(time_entry.errors.count, "error") %> prohibited this time_entry from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger m-3">
+      <p><%= pluralize(time_entry.errors.count, "error") %> prohibited this time_entry from being saved:</p>
 
       <ul>
         <% time_entry.errors.full_messages.each do |message| %>
@@ -25,7 +25,8 @@
  
 
   <div class="actions">
-    <%= form.submit%>
+    
+    <%= form.submit "Submit", class: "btn btn-default" %>
   </div>
 <% end %>
 

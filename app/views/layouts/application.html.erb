@@ -12,8 +12,10 @@
   <body>
     
     <div class="container" style="padding-top: 2rem;">
-
-      <%= link_to("Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger mb-4" ) if current_user.present? %>
+      <% if current_user.present?%>
+       Welcome, <%=current_user.email %>
+      <% end %>
+      <%= link_to("Logout", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger mb-4" ) if current_user.present? %>
       <br/><br/>
       <%= yield %>
     </div>
